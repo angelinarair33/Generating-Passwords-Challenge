@@ -1,9 +1,17 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+function askHowLong() {
+  let length = prompt("How many characters would you like your password to be?");
+  
+  if (length != null) {
+    confirm("You would like " + length + " characters in your password? If so, please confirm.");
+   }
+}
+
 // Write password to the #password input
 function generatePassword() {
-  return "Kevin70$";
+  return askHowLong(), "Kevin70$";
 }
 
 function writePassword() {
