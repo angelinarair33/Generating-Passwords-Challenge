@@ -1,5 +1,9 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+let listLow = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var listUp = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var numChar = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+var specChar = ["!", "#", "$", "%", "&", "(", ")", "*", "+", "-", ".", "/", ":", ";", "<", "=", "?", "@", "^", "_", "`", "{", "|", "}", "~"];
 
 function askHowLong() {
   let length = prompt("How many characters would you like your password to be? Your choice must be a number between 8 and 128.");
@@ -33,6 +37,33 @@ function uppercaseCharacterTypes() {
   } else {
     confirm("You do not want uppercase characters to be included in your password? On to the next option!");
   }
+}
+
+function numericCharacterTypes() {
+  let numEric = confirm("Would you like to include numeric characters in your password?");
+  
+  if (numEric == true) {
+    confirm("You would like numeric characters to be included in your password? If so, please confirm.");
+  } else {
+    confirm("You do not want numeric characters to be included in your password? On to the next option!");
+  }
+}
+
+function specialCharacterTypes() {
+  let speCial = confirm("Would you like to include special characters in your password?");
+  
+  if (speCial == true) {
+    confirm("You would like special characters to be included in your password? If so, please confirm.");
+  } else {
+    confirm("You do not want special characters to be included in your password? On to the next option!");
+  }
+}
+
+
+function entirePassword() {
+  var formula = Math.floor(Math.random() * listLow.length);
+  var pwd = listLow[formula];
+  return pwd;
 }
 
 function writePassword() {
