@@ -59,11 +59,16 @@ function specialCharacterTypes() {
   }
 }
 
-
 function entirePassword() {
-  var formula = Math.floor(Math.random() * listLow.length);
-  var pwd = listLow[formula];
-  return pwd;
+  var formulaL = Math.floor(Math.random() * listLow.length);
+  var pwdL = listLow[formulaL];
+  var formulaU = Math.floor(Math.random() * listUp.length);
+  var pwdU = listUp[formulaU];
+  var formulaN = Math.floor(Math.random() * numChar.length);
+  var pwdN = numChar[formulaN];
+  var formulaS = Math.floor(Math.random() * specChar.length);
+  var pwdS = specChar[formulaS];
+  return pwdL + pwdU + pwdN + pwdS;
 }
 
 function writePassword() {
