@@ -1,21 +1,25 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-let listLow = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var listUp = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-var numChar = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-var specChar = ["!", "#", "$", "%", "&", "(", ")", "*", "+", "-", ".", "/", ":", ";", "<", "=", "?", "@", "^", "_", "`", "{", "|", "}", "~"];
+var listLow = "abcdefghijklmnopqrstuvwxyz";
+var listUp = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var numChar = "0123456789";
+var specChar = "!#$%&()*+-./:;<=?@^_`{|}~,";
+var temp = "";
+var password = "";
 
 function askHowLong() {
-  let length = prompt("How many characters would you like your password to be? Your choice must be a number between 8 and 128.");
+  var length = prompt("How many characters would you like your password to be? Your choice must be a number between 8 and 128.");
   
   if (length != null) {
     confirm("You would like " + length + " characters in your password? If so, please confirm.");
-   }
+   } 
+   return length;
 }
 
 // Write password to the #password input
 function generatePassword() {
-  return askHowLong(), lowercaseCharacterTypes(), uppercaseCharacterTypes(), numericCharacterTypes(), specialCharacterTypes(), entirePassword();
+  lowercaseCharacterTypes(), uppercaseCharacterTypes(), numericCharacterTypes(), specialCharacterTypes();
+  return entirePassword(askHowLong());
 }
 
 function lowercaseCharacterTypes() {
@@ -23,6 +27,7 @@ function lowercaseCharacterTypes() {
   let lowerCase = confirm("Would you like to include lowercase letters in your password?");
   
   if (lowerCase == true) {
+    temp += (listLow);
     confirm("You would like lowercase characters to be included in your password? If so, please confirm.");
   } else {
     confirm("You do not want lowercase characters to be included in your password? On to the next option!");
@@ -33,6 +38,7 @@ function uppercaseCharacterTypes() {
   let upperCase = confirm("Would you like to include uppercase letters in your password?");
   
   if (upperCase == true) {
+    temp += (listUp);
     confirm("You would like uppercase characters to be included in your password? If so, please confirm.");
   } else {
     confirm("You do not want uppercase characters to be included in your password? On to the next option!");
@@ -43,6 +49,7 @@ function numericCharacterTypes() {
   let numEric = confirm("Would you like to include numeric characters in your password?");
   
   if (numEric == true) {
+    temp += (numChar);
     confirm("You would like numeric characters to be included in your password? If so, please confirm.");
   } else {
     confirm("You do not want numeric characters to be included in your password? On to the next option!");
@@ -53,22 +60,22 @@ function specialCharacterTypes() {
   let speCial = confirm("Would you like to include special characters in your password?");
   
   if (speCial == true) {
+    temp += (specChar);
     confirm("You would like special characters to be included in your password? If so, please confirm.");
   } else {
     confirm("You do not want special characters to be included in your password? On to the next option!");
   }
 }
 
-function entirePassword() {
-  var formulaL = Math.floor(Math.random() * listLow.length);
-  var pwdL = listLow[formulaL];
-  var formulaU = Math.floor(Math.random() * listUp.length);
-  var pwdU = listUp[formulaU];
-  var formulaN = Math.floor(Math.random() * numChar.length);
-  var pwdN = numChar[formulaN];
-  var formulaS = Math.floor(Math.random() * specChar.length);
-  var pwdS = specChar[formulaS];
-  return pwdL + pwdU + pwdN + pwdS;
+function entirePassword(length) {
+  for (var i = 0; i < length; i++) {
+    var tempsplit = temp.split("");
+    var randO = tempsplit[Math.floor(Math.random() * temp.length)]
+    
+    password += (randO); 
+  }
+
+  return password;
 }
 
 function writePassword() {
