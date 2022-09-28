@@ -10,10 +10,14 @@ var password = "";
 function askHowLong() {
   var length = prompt("How many characters would you like your password to be? Your choice must be a number between 8 and 128.");
   
-  if (length != null) {
+  if (length >= 8 && length <= 128) {
     confirm("You would like " + length + " characters in your password? If so, please confirm.");
-   } 
-   return length;
+    return length;
+  }
+  if (length < 8 || length > 128) {
+    confirm("You did not enter a valid input. Please try again.")
+    return askHowLong();
+  }
 }
 
 // Write password to the #password input
